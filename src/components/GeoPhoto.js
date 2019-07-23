@@ -1,13 +1,13 @@
 import React from 'react'
-import Header from './Header'
 import SubHeader from './SubHeader'
 import LocationSearch from './LocationSearch'
+import LocationDashboard from './LocationDashboard'
 
 const GeoPhoto = () => (
     <div>
-        <Header />
         <SubHeader />
         <LocationSearch />
+        <LocationDashboard />
     </div>
 )
 

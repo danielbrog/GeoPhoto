@@ -1,8 +1,9 @@
 import uuid from 'uuid';
 
-export default addLocation = (
+export const addLocation = (
     {
         tags = [{}],
+        title = '',
         description = '',
         visited = '',
         imageName = ''
@@ -12,6 +13,7 @@ export default addLocation = (
         location: {
             id: uuid(),
             tags,
+            title,
             description,
             visited,
             imageName

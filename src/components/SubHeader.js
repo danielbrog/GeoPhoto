@@ -2,7 +2,7 @@ import React from 'react'
 
 const SubHeader = () => (
     <div>
-        GeoPhoto + geophoto.jpg
+        SUBHEADER GeoPhoto + geophoto.jpg
     </div>
 )
 
