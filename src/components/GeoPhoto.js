@@ -1,12 +1,14 @@
 import React from 'react'
 import SubHeader from './SubHeader'
 import LocationSearch from './LocationSearch'
+import LocationList from './LocationList'
 import LocationDashboard from './LocationDashboard'
 
 const GeoPhoto = () => (
-    <div>
+    <div className="geoPhoto">
         <SubHeader />
         <LocationSearch />
+        <LocationList />
         <LocationDashboard />
     </div>
 )

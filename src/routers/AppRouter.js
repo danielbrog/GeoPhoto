@@ -7,11 +7,13 @@ import Header from '../components/Header'
 const AppRouter = () => (
 
         <BrowserRouter>
+        <div>
         <Header />
             <Switch>
-                <Route exact path="/" component={GeoPhoto}/>
-                <Route exact path="/addLocation" component={AddLocation}/>
+                <Route exact={true} path="/GeoPhoto" component={GeoPhoto}/>
+                <Route path="/GeoPhoto/addLocation" component={AddLocation}/>
             </Switch>
+            </div>
         </BrowserRouter>
 
 )

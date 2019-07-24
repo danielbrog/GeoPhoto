@@ -1,22 +1,29 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import LocationItem from './LocationItem'
+import {connect} from 'react-redux';
+import {addManyLocations} from '../actions/locations'
 
-const LocationDashBoard = (props) => (
-    <div>{console.log(props.locations)}
-        {
-            props.locations.length === 0 ? (
-                <p className="locationDashboard_noLocation">No Locations.</p>
-            ) : (
-            props.locations.map(location => (
-                <LocationItem
-                    key = {location.id}
-                    {...location}
-                />
-                )))
+export class LocationDashboard extends React.Component{
+    constructor (props){
+        super(props)
     }
-    </div>
-)
+    componentDidMount() {
+        fetch('/api/locations')
+        .then(res => res.json())
+        .then(
+            (result => {
+                this.props.addManyLocations({locations: result})
+            })
+        )
+    }
+
+    render() {
+        return (
+            <div>
+            DASHBOARD
+            </div>
+        )
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -24,4 +31,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(LocationDashBoard)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addManyLocations: (locations) => dispatch(addManyLocations(locations))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationDashboard)
