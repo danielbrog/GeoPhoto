@@ -8,6 +8,8 @@ const LocationItem = (props) => (
         {props.description}
         {props.visited}
         {props.imageName}
+        {props.latitude}
+        {props.longitude}
     </div>
 )
 

@@ -21,6 +21,8 @@ export default (state = locationDefaultState, action) => {
             return [...state, action.location]
         case 'ADD_MANY_LOCATIONS':
             return [...state, ...action.locations]
+        case 'SET_LOCATIONS':
+            return [...action.locations]
         default:
             return state
     }

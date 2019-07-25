@@ -28,3 +28,12 @@ export const addManyLocations = (
     type: 'ADD_MANY_LOCATIONS',
     locations
 })
+
+export const setLocations = (
+    {
+        locations = []
+    } = {}
+) => ({
+    type: 'SET_LOCATIONS',
+    locations
+})

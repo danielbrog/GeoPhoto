@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux';
-import {addManyLocations} from '../actions/locations'
+import {setLocations} from '../actions/locations'
 
 export class LocationDashboard extends React.Component{
     constructor (props){
@@ -11,7 +11,7 @@ export class LocationDashboard extends React.Component{
         .then(res => res.json())
         .then(
             (result => {
-                this.props.addManyLocations({locations: result})
+                this.props.setLocations({locations: result})
             })
         )
     }
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addManyLocations: (locations) => dispatch(addManyLocations(locations))
+        setLocations: (locations) => dispatch(setLocations(locations))
     }
 }
 
