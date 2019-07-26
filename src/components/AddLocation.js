@@ -1,15 +1,17 @@
 import React from 'react'
-import { connect } from 'react-redux';
-import {addLocation} from '../actions/locations'
+import axios from 'axios'
 
 export class AddLocation extends React.Component {
     constructor(props){
         super(props)
         this.state={
             description: '',
-            imageName: '',
+            image: null,
             tags: [''],
             title: '',
+            latitude: '',
+            longitude: '',
+            author: 'test'
         }
     }
 
@@ -23,21 +25,47 @@ export class AddLocation extends React.Component {
         this.setState(() => ({title}))
     }
 
+    onLatitudeChange = (e)=> {
+        const latitude = e.target.value
+        this.setState(() => ({latitude}))
+    }
+
+    onLongitudeChange = (e) => {
+        const longitude = e.target.value
+        this.setState(() => ({longitude}))
+    }
+
     onImageChange = (e) => {
-        const image = e.target.value
-        this.setState(() => ({imageName: image}))
+        const image = e.target.files[0]
+        this.setState(() => ({image}))
     }
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.onSubmit({
-            description: this.state.description,
-            title: this.state.title,
-            visited: true,
-            tags: this.state.tags,
-            imageName: this.state.imageName
+
+
+        const data = new FormData();
+        //data.append('image',this.state.image)
+        data.append('description',this.state.description)
+        data.append('title',this.state.title)
+        data.append('tags',this.state.tags)
+        data.append('latitude',this.state.latitude)
+        data.append('longitude',this.state.longitude)
+        data.append('author',this.state.author)
+        data.append('visited','true')
+        console.log(this.state.description)
+
+        const imageData = new FormData();
+        imageData.append('image',this.state.image)
+
+        axios.post('/api/location', {
+            file: imageData,
+            body: data
         })
-        this.props.history.push('/')
+        .then( (res) => {
+            console.log(res)
+        })
+
     }
 
     render() {    
@@ -55,9 +83,17 @@ export class AddLocation extends React.Component {
                 onChange={this.onDescChange}
             ></input>
             <input 
-                placeholder="image"
-                onChange={this.onImageChange}
+                placeholder="latitude"
+                onChange={this.onLatitudeChange}
             ></input>
+            <input 
+                placeholder="longitude"
+                onChange={this.onLongitudeChange}
+            ></input>
+            <input 
+                type='file' 
+                onChange={this.onImageChange}
+            />
             Cliff: <input type="checkbox" name="cliff" vlaue="cliff" />
             Sea: <input type="checkbox" name="sea" vlaue="sea" />
             <button>Submit</button>
@@ -67,8 +103,4 @@ export class AddLocation extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (location) => dispatch(addLocation(location))
-})
-
-export default connect(undefined, mapDispatchToProps)(AddLocation)
+export default AddLocation

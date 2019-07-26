@@ -8,7 +8,7 @@ const LocationSearch = () => (
             <input className= "searchBar"></input>
             <button className="searchSubmit">Search</button>
         </form>
-        <NavLink to="/addLocation">Add Location</NavLink>
+        <NavLink to="/GeoPhoto/addLocation">Add Location</NavLink>
     </div>
 )
 
