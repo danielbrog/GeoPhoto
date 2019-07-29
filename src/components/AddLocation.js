@@ -1,12 +1,11 @@
 import React from 'react'
-import axios from 'axios'
 
 export class AddLocation extends React.Component {
     constructor(props){
         super(props)
         this.state={
             description: '',
-            image: null,
+            image: '',
             tags: [''],
             title: '',
             latitude: '',
@@ -40,12 +39,13 @@ export class AddLocation extends React.Component {
         this.setState(() => ({image}))
     }
 
+
     onSubmit = (e) => {
         e.preventDefault()
 
 
         const data = new FormData();
-        //data.append('image',this.state.image)
+
         data.append('description',this.state.description)
         data.append('title',this.state.title)
         data.append('tags',this.state.tags)
@@ -53,21 +53,42 @@ export class AddLocation extends React.Component {
         data.append('longitude',this.state.longitude)
         data.append('author',this.state.author)
         data.append('visited','true')
-        console.log(this.state.description)
+        data.append('image',this.state.image)
 
-        const imageData = new FormData();
-        imageData.append('image',this.state.image)
 
-        axios.post('/api/location', {
-            file: imageData,
+        console.log('before fetch')
+        fetch('/api/location', {
+            method: 'post',
             body: data
+        }).then((response) => {
+            response.json().then((data) => {
+                if (data.status == 500) {
+                    errorInfo.textContent = "There was an error updating the image"
+                } else {
+                    console.log('done')
+                }
+            })
         })
-        .then( (res) => {
-            console.log(res)
-        })
-
+        
     }
+    /*
+    onSubmit = (e) => {
+        e.preventDefault()
 
+        const data = new FormData();
+
+        data.append('description',this.state.description)
+        data.append('title',this.state.title)
+        data.append('tags',this.state.tags)
+        data.append('latitude',this.state.latitude)
+        data.append('longitude',this.state.longitude)
+        data.append('author',this.state.author)
+        data.append('visited','true')
+        data.append('image','hello')
+
+        axiom
+    }
+*/
     render() {    
         return(
         <div>

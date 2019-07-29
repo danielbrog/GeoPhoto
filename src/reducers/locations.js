@@ -4,14 +4,14 @@ const locationDefaultState = [{
     title: 'cool cliff',
     description: 'cliffface',
     visited: true,
-    imageName: '3434'
+    image: '3434'
 },{
     _id: '45',
     tags: ['ocean'],
     title: 'cool waves',
     description: 'wavey',
     visited: false,
-    imageName: '4545'
+    image: '4545'
 }
 ]
 

@@ -6,7 +6,7 @@ export const addLocation = (
         title = '',
         description = '',
         visited = '',
-        imageName = ''
+        image = ''
     } = {}
 ) => ({
     type: 'ADD_LOCATION',
@@ -16,7 +16,7 @@ export const addLocation = (
         title,
         description,
         visited,
-        imageName
+        image
     }
 })
 
