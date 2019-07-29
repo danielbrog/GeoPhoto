@@ -1,19 +1,4 @@
-const locationDefaultState = [{
-    _id: '34',
-    tags: ['cliff'],
-    title: 'cool cliff',
-    description: 'cliffface',
-    visited: true,
-    image: '3434'
-},{
-    _id: '45',
-    tags: ['ocean'],
-    title: 'cool waves',
-    description: 'wavey',
-    visited: false,
-    image: '4545'
-}
-]
+const locationDefaultState = []
 
 export default (state = locationDefaultState, action) => {
     switch (action.type) {

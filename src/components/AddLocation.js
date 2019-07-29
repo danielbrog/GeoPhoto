@@ -56,7 +56,6 @@ export class AddLocation extends React.Component {
         data.append('image',this.state.image)
 
 
-        console.log('before fetch')
         fetch('/api/location', {
             method: 'post',
             body: data
@@ -65,7 +64,7 @@ export class AddLocation extends React.Component {
                 if (data.status == 500) {
                     errorInfo.textContent = "There was an error updating the image"
                 } else {
-                    console.log('done')
+                    this.props.history.push('/GeoPhoto')
                 }
             })
         })
