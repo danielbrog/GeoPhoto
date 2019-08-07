@@ -12,8 +12,7 @@ const LocationItem = (props) => {
         <div className="LocationItem__desc">{props.description}</div>
         <div className="LocationItem__visited">{props.visited}</div>
         
-        <div className="LocationItem__lat">{props.latitude}</div>
-        <div className="LocationItem__long">{props.longitude}</div>
+        <div className="LocationItem__lat">{props.coordinates}</div>
     </div>
 )}
 
